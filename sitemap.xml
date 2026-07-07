@@ -1,73 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://your-domain.com/</loc>
+    <loc>https://toolmakmonet.github.io/toolbox/</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://your-domain.com/tools/char-counter.html</loc>
+    <loc>https://toolmakmonet.github.io/toolbox/tools/char-counter.html</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://your-domain.com/tools/bmi.html</loc>
+    <loc>https://toolmakmonet.github.io/toolbox/tools/bmi.html</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://your-domain.com/tools/date-calc.html</loc>
+    <loc>https://toolmakmonet.github.io/toolbox/tools/date-calc.html</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://your-domain.com/tools/tax-calc.html</loc>
+    <loc>https://toolmakmonet.github.io/toolbox/tools/tax-calc.html</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://your-domain.com/tools/unit-convert.html</loc>
+    <loc>https://toolmakmonet.github.io/toolbox/tools/unit-convert.html</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://your-domain.com/tools/password-gen.html</loc>
+    <loc>https://toolmakmonet.github.io/toolbox/tools/password-gen.html</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://your-domain.com/tools/case-converter.html</loc>
+    <loc>https://toolmakmonet.github.io/toolbox/tools/case-converter.html</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://your-domain.com/tools/loan-calc.html</loc>
+    <loc>https://toolmakmonet.github.io/toolbox/tools/loan-calc.html</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://your-domain.com/tools/color-picker.html</loc>
+    <loc>https://toolmakmonet.github.io/toolbox/tools/color-picker.html</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://your-domain.com/tools/qr-gen.html</loc>
+    <loc>https://toolmakmonet.github.io/toolbox/tools/qr-gen.html</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://your-domain.com/tools/age-calc.html</loc>
+    <loc>https://toolmakmonet.github.io/toolbox/tools/age-calc.html</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
