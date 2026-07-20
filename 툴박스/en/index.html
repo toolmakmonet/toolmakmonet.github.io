@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    // Save language preference as English
+    localStorage.setItem('lang', 'en');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1448989198452809" crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-1448989198452809">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toolbox - Free Online Utility Tools | Word Counter, BMI, Date Calc</title>
+  <meta name="description" content="Use 10+ free online tools including character counter, unit converter, date calculator, BMI, password generator, and more. No registration required." />
+  <meta name="keywords" content="online tools, character counter, BMI calculator, date calculator, utility tools, free tools" />
+  <meta property="og:title" content="Toolbox - Free Online Utility Tools" />
+  <meta property="og:description" content="Premium online utility tools without sign-ups and completely free." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+<header class="header" id="header">
+  <nav class="nav container">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-icon">🛠️</span>
+      <span class="logo-text">Toolbox</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#tools">All Tools</a></li>
+      <li><a href="#popular">Popular</a></li>
+      <li><a href="../index.html" class="lang-link" onclick="localStorage.setItem('lang', 'ko')">🌐 KO</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" title="Dark/Light Mode">🌙</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-badge">✨ V2.0 Premium Upgrade!</div>
+    <h1 class="hero-title">
+      All the tools you need,<br/>
+      <span class="gradient-text">completely free forever</span>
+    </h1>
+    <p class="hero-sub">No sign-up. No payments. Only perfect utility tools.</p>
+    <div class="hero-search">
+      <input type="text" id="searchInput" placeholder="Search for tools (e.g. word counter, BMI, age)" />
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Free Tools</span></div>
+      <div class="stat"><span class="stat-num">$0</span><span class="stat-label">Lifetime Free</span></div>
+      <div class="stat"><span class="stat-num">1s</span><span class="stat-label">Ultra Fast</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="adsense-zone container"><div class="adsense-placeholder">📢 Advertisement (Google AdSense)</div></div>
+
+<section class="section" id="popular">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">🔥 HOT</span>
+      <h2 class="section-title">Popular Tools</h2>
+      <p class="section-sub">Most loved and highly used tools by users</p>
+    </div>
+    
+    <div class="tools-grid">
+      <a href="tools/char-counter.html" class="tool-card glass-card scroll-reveal" data-tags="word character counter text letter byte limit">
+        <span class="tool-emoji">📝</span>
+        <h3 class="tool-name">Word & Character Counter</h3>
+        <p class="tool-desc">Count characters with/without spaces, words, and bytes in real-time</p>
+        <div class="tool-tags"><span>Text</span><span>No.1</span></div>
+      </a>
+      
+      <a href="tools/tax-calc.html" class="tool-card glass-card scroll-reveal" data-tags="tax salary income calculator pay net take home">
+        <span class="tool-emoji">💰</span>
+        <h3 class="tool-name">Salary & Tax Calculator</h3>
+        <p class="tool-desc">Calculate your real net take-home pay after taxes and deductions</p>
+        <div class="tool-tags"><span>Finance</span><span>No.2</span></div>
+      </a>
+      
+      <a href="tools/date-calc.html" class="tool-card glass-card scroll-reveal" data-tags="date dday calculator difference anniversary schedule">
+        <span class="tool-emoji">📅</span>
+        <h3 class="tool-name">Date & D-Day Calculator</h3>
+        <p class="tool-desc">Super simple calculation for D-day, date difference, and anniversaries</p>
+        <div class="tool-tags"><span>Life</span><span>No.3</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tools">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">🛠️ ALL TOOLS</span>
+      <h2 class="section-title">All Utility Tools</h2>
+      <p class="section-sub">Search and explore all our free utility tools</p>
+    </div>
+
+    <div class="tools-grid" id="allToolsGrid">
+      
+      <!-- Calculators -->
+      <a href="tools/bmi.html" class="tool-card glass-card scroll-reveal" data-tags="bmi obesity weight health height fitness diet">
+        <span class="tool-emoji">⚖️</span>
+        <h3 class="tool-name">BMI Calculator</h3>
+        <p class="tool-desc">Calculate your body mass index and check ideal weight range</p>
+        <div class="tool-tags"><span>Health</span></div>
+      </a>
+      <a href="tools/loan-calc.html" class="tool-card glass-card scroll-reveal" data-tags="loan interest monthly principal payment finance">
+        <span class="tool-emoji">🏦</span>
+        <h3 class="tool-name">Loan Calculator</h3>
+        <p class="tool-desc">Calculate total interest and monthly payments by repayment types</p>
+        <div class="tool-tags"><span>Finance</span></div>
+      </a>
+      <a href="tools/age-calc.html" class="tool-card glass-card scroll-reveal" data-tags="age birthday zodiac sign days until D-day">
+        <span class="tool-emoji">🎂</span>
+        <h3 class="tool-name">Age Calculator</h3>
+        <p class="tool-desc">Find your exact age, Chinese zodiac sign, and days until next birthday</p>
+        <div class="tool-tags"><span>Life</span></div>
+      </a>
+      <a href="tools/unit-convert.html" class="tool-card glass-card scroll-reveal" data-tags="unit converter length weight temp area converter">
+        <span class="tool-emoji">📐</span>
+        <h3 class="tool-name">Unit Converter</h3>
+        <p class="tool-desc">Convert units for length, weight, temperature, area, and more</p>
+        <div class="tool-tags"><span>Convert</span></div>
+      </a>
+
+      <!-- Text/Security -->
+      <a href="tools/password-gen.html" class="tool-card glass-card scroll-reveal" data-tags="password generator secure random strong password">
+        <span class="tool-emoji">🔐</span>
+        <h3 class="tool-name">Password Generator</h3>
+        <p class="tool-desc">Instantly generate strong, secure random passwords to prevent hacking</p>
+        <div class="tool-tags"><span>Security</span></div>
+      </a>
+      <a href="tools/case-converter.html" class="tool-card glass-card scroll-reveal" data-tags="case converter text uppercase lowercase camel snake">
+        <span class="tool-emoji">🔤</span>
+        <h3 class="tool-name">Case Converter</h3>
+        <p class="tool-desc">Automatically convert text to UPPERCASE, lowercase, camelCase, etc.</p>
+        <div class="tool-tags"><span>Text</span></div>
+      </a>
+      
+      <!-- Utilities -->
+      <a href="tools/color-picker.html" class="tool-card glass-card scroll-reveal" data-tags="color picker code hex rgb hsl converter design">
+        <span class="tool-emoji">🎨</span>
+        <h3 class="tool-name">Color Picker & Converter</h3>
+        <p class="tool-desc">Select colors and instantly copy their HEX, RGB, or HSL codes</p>
+        <div class="tool-tags"><span>Design</span></div>
+      </a>
+      <a href="tools/qr-gen.html" class="tool-card glass-card scroll-reveal" data-tags="qr code generator URL link convert free">
+        <span class="tool-emoji">📱</span>
+        <h3 class="tool-name">QR Code Generator</h3>
+        <p class="tool-desc">Convert any URL or text into a high-quality QR code for free</p>
+        <div class="tool-tags"><span>Utility</span></div>
+      </a>
+      
+    </div>
+  </div>
+</section>
+
+<div class="adsense-zone container"><div class="adsense-placeholder">📢 Advertisement (Google AdSense)</div></div>
+
+<footer class="footer">
+  <div class="container" style="text-align:center;padding:40px 0;border-top:1px solid var(--border);">
+    <div style="font-size:1.5rem;font-weight:900;margin-bottom:8px">🛠️ Toolbox</div>
+    <p style="color:var(--text-muted);font-size:0.9rem">© 2026 Toolbox · Advertise & Partnership</p>
+  </div>
+</footer>
+
+<script src="../main.js"></script>
+
+<!-- Social Bar Ad -->
+<script src="https://pl30449988.effectivecpmnetwork.com/e8/cf/3f/e8cf3fd4d0fa1cf2ede054eed2e044b6.js"></script>
+<!-- Popunder Ad -->
+<script src="https://pl30449989.effectivecpmnetwork.com/3f/ac/ae/3facae89d4680a80fe174eba6f40cd5a.js"></script>
+</body>
+</html>

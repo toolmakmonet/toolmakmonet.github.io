@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-1448989198452809">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1448989198452809" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>단위 변환기 - 길이, 무게, 온도, 넓이 단위 변환 | 툴박스</title>
+  <meta name="description" content="길이, 무게, 온도, 넓이, 부피 등 다양한 단위를 무료로 즉시 변환해드립니다!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .category-pills { display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px; }
+    .pill {
+      padding:8px 18px; border-radius:50px; border:1.5px solid var(--border);
+      background:transparent; color:var(--text-secondary); font-family:inherit;
+      font-size:0.85rem; font-weight:600; cursor:pointer; transition:all 0.2s;
+    }
+    .pill.active {
+      background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+      color:white; border-color:var(--primary);
+    }
+    .convert-row {
+      display:grid; grid-template-columns:1fr auto 1fr; gap:16px; align-items:end; margin-bottom:16px;
+    }
+    .swap-btn {
+      background:var(--bg-surface); border:1.5px solid var(--border);
+      border-radius:50%; width:44px; height:44px; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.2rem; transition:all 0.2s; flex-shrink:0;
+    }
+    .swap-btn:hover { background:var(--primary); border-color:var(--primary); transform:rotate(180deg); }
+    .result-display {
+      background:linear-gradient(135deg,rgba(99,102,241,0.08),rgba(6,182,212,0.08));
+      border:1.5px solid var(--border); border-radius:var(--radius-lg);
+      padding:20px 24px; text-align:center; margin-top:8px;
+    }
+    .result-display .big { font-size:2rem; font-weight:800; color:var(--primary-light); }
+    .all-conversions { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:16px; }
+    .conv-item {
+      background:var(--bg-surface); border-radius:var(--radius-sm);
+      padding:10px 14px; display:flex; justify-content:space-between;
+      font-size:0.85rem; border:1px solid var(--border);
+    }
+    .conv-item .unit { color:var(--text-muted); }
+    .conv-item .val { font-weight:700; color:var(--text-primary); }
+  </style>
+</head>
+<body>
+<header class="header">
+  <nav class="nav container">
+    <a href="../index.html" class="nav-logo"><span class="logo-icon">🛠️</span><span class="logo-text">툴박스</span></a>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+  </nav>
+</header>
+
+<main class="tool-page">
+  <div class="container">
+    <a href="../index.html" class="back-btn">← 전체 도구로 돌아가기</a>
+    <div class="tool-page-header">
+      <div style="font-size:3.5rem">📐</div>
+      <h1>단위 변환기</h1>
+      <p>길이, 무게, 온도, 넓이 등 다양한 단위를 즉시 변환</p>
+    </div>
+
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+      <div class="ad-desktop" style="display:block;">
+<script>
+  atOptions = {
+    'key' : '05f8ecca621b83cf8bfe28d7adb9d842',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/05f8ecca621b83cf8bfe28d7adb9d842/invoke.js"></script>
+      </div>
+    </div>
+
+    <div class="tool-box">
+      <div class="category-pills">
+        <button class="pill active" onclick="setCategory('length', this)">📏 길이</button>
+        <button class="pill" onclick="setCategory('weight', this)">⚖️ 무게</button>
+        <button class="pill" onclick="setCategory('temp', this)">🌡️ 온도</button>
+        <button class="pill" onclick="setCategory('area', this)">🟦 넓이</button>
+        <button class="pill" onclick="setCategory('volume', this)">🧊 부피</button>
+        <button class="pill" onclick="setCategory('speed', this)">🚀 속도</button>
+      </div>
+
+      <div class="convert-row">
+        <div>
+          <label class="form-label">입력 값</label>
+          <input type="number" class="form-input" id="inputVal" value="1" oninput="convert()" />
+        </div>
+        <button class="swap-btn" onclick="swapUnits()" title="단위 교환">⇄</button>
+        <div>
+          <label class="form-label" style="opacity:0">result</label>
+          <div class="result-display">
+            <div class="big" id="mainResult">-</div>
+            <div style="color:var(--text-muted);font-size:0.85rem;margin-top:4px" id="mainUnit">-</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+        <div class="form-group" style="margin:0">
+          <label class="form-label">변환 전</label>
+          <select class="form-select" id="fromUnit" onchange="convert()"></select>
+        </div>
+        <div class="form-group" style="margin:0">
+          <label class="form-label">변환 후</label>
+          <select class="form-select" id="toUnit" onchange="convert()"></select>
+        </div>
+      </div>
+
+      <!-- All conversions -->
+      <div id="allConversions" style="display:none;">
+        <p style="font-size:0.85rem;font-weight:700;color:var(--text-secondary);margin-bottom:8px">전체 변환 결과</p>
+        <div class="all-conversions" id="allConvGrid"></div>
+      </div>
+    </div>
+
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+<script>
+  atOptions = {
+    'key' : '45b3896c65f61fa42904ff26143ca550',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/45b3896c65f61fa42904ff26143ca550/invoke.js"></script>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-logo"><span class="logo-icon">🛠️</span><span class="logo-text">툴박스</span></div>
+    <p class="footer-copy">© 2026 툴박스 · 무료 온라인 도구</p>
+  </div>
+</footer>
+
+<script>
+const tt = document.getElementById('themeToggle');
+if (localStorage.getItem('theme') === 'light') { document.body.classList.add('light'); tt.textContent = '☀️'; }
+tt.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  const isLight = document.body.classList.contains('light');
+  tt.textContent = isLight ? '☀️' : '🌙';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+const UNITS = {
+  length: {
+    name: '길이',
+    units: [
+      { label:'킬로미터 (km)', key:'km', toBase: v => v * 1000, fromBase: v => v / 1000 },
+      { label:'미터 (m)', key:'m', toBase: v => v, fromBase: v => v },
+      { label:'센티미터 (cm)', key:'cm', toBase: v => v / 100, fromBase: v => v * 100 },
+      { label:'밀리미터 (mm)', key:'mm', toBase: v => v / 1000, fromBase: v => v * 1000 },
+      { label:'마일 (mi)', key:'mi', toBase: v => v * 1609.344, fromBase: v => v / 1609.344 },
+      { label:'야드 (yd)', key:'yd', toBase: v => v * 0.9144, fromBase: v => v / 0.9144 },
+      { label:'피트 (ft)', key:'ft', toBase: v => v * 0.3048, fromBase: v => v / 0.3048 },
+      { label:'인치 (in)', key:'in', toBase: v => v * 0.0254, fromBase: v => v / 0.0254 },
+      { label:'해리 (nm)', key:'nm', toBase: v => v * 1852, fromBase: v => v / 1852 },
+    ]
+  },
+  weight: {
+    name: '무게',
+    units: [
+      { label:'킬로그램 (kg)', key:'kg', toBase: v => v, fromBase: v => v },
+      { label:'그램 (g)', key:'g', toBase: v => v / 1000, fromBase: v => v * 1000 },
+      { label:'밀리그램 (mg)', key:'mg', toBase: v => v / 1e6, fromBase: v => v * 1e6 },
+      { label:'파운드 (lb)', key:'lb', toBase: v => v * 0.453592, fromBase: v => v / 0.453592 },
+      { label:'온스 (oz)', key:'oz', toBase: v => v * 0.0283495, fromBase: v => v / 0.0283495 },
+      { label:'돈 (don)', key:'don', toBase: v => v * 0.00375, fromBase: v => v / 0.00375 },
+      { label:'근 (geun)', key:'geun', toBase: v => v * 0.6, fromBase: v => v / 0.6 },
+      { label:'톤 (t)', key:'t', toBase: v => v * 1000, fromBase: v => v / 1000 },
+    ]
+  },
+  temp: {
+    name: '온도',
+    units: [
+      { label:'섭씨 (°C)', key:'c' },
+      { label:'화씨 (°F)', key:'f' },
+      { label:'켈빈 (K)', key:'k' },
+    ]
+  },
+  area: {
+    name: '넓이',
+    units: [
+      { label:'제곱미터 (m²)', key:'m2', toBase: v => v, fromBase: v => v },
+      { label:'제곱킬로미터 (km²)', key:'km2', toBase: v => v * 1e6, fromBase: v => v / 1e6 },
+      { label:'제곱센티미터 (cm²)', key:'cm2', toBase: v => v / 10000, fromBase: v => v * 10000 },
+      { label:'헥타르 (ha)', key:'ha', toBase: v => v * 10000, fromBase: v => v / 10000 },
+      { label:'에이커 (acre)', key:'acre', toBase: v => v * 4046.86, fromBase: v => v / 4046.86 },
+      { label:'평 (pyeong)', key:'pyeong', toBase: v => v * 3.30579, fromBase: v => v / 3.30579 },
+    ]
+  },
+  volume: {
+    name: '부피',
+    units: [
+      { label:'리터 (L)', key:'l', toBase: v => v, fromBase: v => v },
+      { label:'밀리리터 (mL)', key:'ml', toBase: v => v / 1000, fromBase: v => v * 1000 },
+      { label:'세제곱미터 (m³)', key:'m3', toBase: v => v * 1000, fromBase: v => v / 1000 },
+      { label:'갤런 미국 (gal)', key:'gal', toBase: v => v * 3.78541, fromBase: v => v / 3.78541 },
+      { label:'컵 (cup)', key:'cup', toBase: v => v * 0.236588, fromBase: v => v / 0.236588 },
+      { label:'테이블스푼 (tbsp)', key:'tbsp', toBase: v => v * 0.0147868, fromBase: v => v / 0.0147868 },
+    ]
+  },
+  speed: {
+    name: '속도',
+    units: [
+      { label:'km/h', key:'kmh', toBase: v => v, fromBase: v => v },
+      { label:'m/s', key:'ms', toBase: v => v * 3.6, fromBase: v => v / 3.6 },
+      { label:'mph', key:'mph', toBase: v => v * 1.60934, fromBase: v => v / 1.60934 },
+      { label:'노트 (knot)', key:'knot', toBase: v => v * 1.852, fromBase: v => v / 1.852 },
+      { label:'마하 (Mach)', key:'mach', toBase: v => v * 1234.8, fromBase: v => v / 1234.8 },
+    ]
+  }
+};
+
+let currentCategory = 'length';
+
+function setCategory(cat, btn) {
+  currentCategory = cat;
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  populateSelects();
+  convert();
+}
+
+function populateSelects() {
+  const data = UNITS[currentCategory];
+  const from = document.getElementById('fromUnit');
+  const to = document.getElementById('toUnit');
+  from.innerHTML = data.units.map((u,i) => `<option value="${u.key}">${u.label}</option>`).join('');
+  to.innerHTML = data.units.map((u,i) => `<option value="${u.key}" ${i===1?'selected':''}>${u.label}</option>`).join('');
+}
+
+function convertTemp(val, from, to) {
+  let celsius;
+  if (from === 'c') celsius = val;
+  else if (from === 'f') celsius = (val - 32) * 5/9;
+  else celsius = val - 273.15;
+  if (to === 'c') return celsius;
+  if (to === 'f') return celsius * 9/5 + 32;
+  return celsius + 273.15;
+}
+
+function formatNum(n) {
+  if (Math.abs(n) >= 1e9) return (n/1e9).toFixed(4) + 'B';
+  if (Math.abs(n) >= 1e6) return (n/1e6).toFixed(4) + 'M';
+  if (Math.abs(n) === 0) return '0';
+  if (Math.abs(n) < 0.0001) return n.toExponential(4);
+  return parseFloat(n.toPrecision(7)).toLocaleString('ko-KR');
+}
+
+function convert() {
+  const val = parseFloat(document.getElementById('inputVal').value);
+  if (isNaN(val)) return;
+  const fromKey = document.getElementById('fromUnit').value;
+  const toKey = document.getElementById('toUnit').value;
+  const data = UNITS[currentCategory];
+
+  let result;
+  if (currentCategory === 'temp') {
+    result = convertTemp(val, fromKey, toKey);
+  } else {
+    const fromUnit = data.units.find(u => u.key === fromKey);
+    const toUnit = data.units.find(u => u.key === toKey);
+    const base = fromUnit.toBase(val);
+    result = toUnit.fromBase(base);
+  }
+
+  const toLabel = data.units.find(u => u.key === toKey)?.label || toKey;
+  document.getElementById('mainResult').textContent = formatNum(result);
+  document.getElementById('mainUnit').textContent = toLabel;
+
+  // All conversions
+  if (currentCategory !== 'temp') {
+    const fromUnit = data.units.find(u => u.key === fromKey);
+    const base = fromUnit.toBase(val);
+    const grid = document.getElementById('allConvGrid');
+    grid.innerHTML = data.units.map(u => `
+      <div class="conv-item">
+        <span class="unit">${u.label.split(' ')[0]}</span>
+        <span class="val">${formatNum(u.fromBase(base))}</span>
+      </div>`).join('');
+    document.getElementById('allConversions').style.display = 'block';
+  } else {
+    document.getElementById('allConversions').style.display = 'none';
+  }
+}
+
+function swapUnits() {
+  const from = document.getElementById('fromUnit');
+  const to = document.getElementById('toUnit');
+  const tmp = from.value;
+  from.value = to.value;
+  to.value = tmp;
+  convert();
+}
+
+// Init
+populateSelects();
+convert();
+</script>
+
+<!-- Social Bar Ad -->
+<script src="https://pl30449988.effectivecpmnetwork.com/e8/cf/3f/e8cf3fd4d0fa1cf2ede054eed2e044b6.js"></script>
+<!-- Popunder Ad -->
+<script src="https://pl30449989.effectivecpmnetwork.com/3f/ac/ae/3facae89d4680a80fe174eba6f40cd5a.js"></script>
+</body>
+</html>

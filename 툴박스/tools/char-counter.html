@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-1448989198452809">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1448989198452809" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>글자수 세기 - 무료 온라인 글자수 카운터 | 툴박스</title>
+  <meta name="description" content="글자수, 단어수, 문장수, 줄수를 실시간으로 무료로 세어드립니다. 회원가입 없이 즉시 사용!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+<header class="header">
+  <nav class="nav container">
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-icon">🛠️</span>
+      <span class="logo-text">툴박스</span>
+    </a>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+  </nav>
+</header>
+
+<main class="tool-page">
+  <div class="container">
+    <a href="../index.html" class="back-btn">← 전체 도구로 돌아가기</a>
+
+    <div class="tool-page-header">
+      <div style="font-size:3.5rem">📝</div>
+      <h1>글자수 세기</h1>
+      <p>글자수, 단어수, 문장수, 줄수를 실시간으로 계산해드립니다</p>
+    </div>
+
+    <!-- AdSense Top -->
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+      <div class="ad-desktop" style="display:block;">
+<script>
+  atOptions = {
+    'key' : '05f8ecca621b83cf8bfe28d7adb9d842',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/05f8ecca621b83cf8bfe28d7adb9d842/invoke.js"></script>
+      </div>
+    </div>
+
+    <div class="tool-box">
+      <div class="form-group">
+        <label class="form-label">텍스트 입력</label>
+        <textarea class="form-textarea" id="textInput" placeholder="여기에 텍스트를 입력하거나 붙여넣기 하세요..." style="min-height:200px"></textarea>
+      </div>
+
+      <!-- Options -->
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;">
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.9rem;color:var(--text-secondary)">
+          <input type="checkbox" id="excludeSpaces" style="width:16px;height:16px;accent-color:var(--primary)"/>
+          공백 제외 글자수
+        </label>
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.9rem;color:var(--text-secondary)">
+          <input type="checkbox" id="excludeNewlines" style="width:16px;height:16px;accent-color:var(--primary)"/>
+          줄바꿈 제외
+        </label>
+      </div>
+
+      <!-- Results -->
+      <div class="result-box">
+        <div class="result-grid">
+          <div class="result-item">
+            <span class="result-num" id="charCount">0</span>
+            <div class="result-label">글자수</div>
+          </div>
+          <div class="result-item">
+            <span class="result-num" id="charNoSpaceCount">0</span>
+            <div class="result-label">공백 제외</div>
+          </div>
+          <div class="result-item">
+            <span class="result-num" id="wordCount">0</span>
+            <div class="result-label">단어수</div>
+          </div>
+          <div class="result-item">
+            <span class="result-num" id="sentenceCount">0</span>
+            <div class="result-label">문장수</div>
+          </div>
+          <div class="result-item">
+            <span class="result-num" id="lineCount">0</span>
+            <div class="result-label">줄수</div>
+          </div>
+          <div class="result-item">
+            <span class="result-num" id="byteCount">0</span>
+            <div class="result-label">바이트</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div style="margin-top:20px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+          <span style="font-size:0.85rem;color:var(--text-secondary);font-weight:600">인스타그램 캡션 제한</span>
+          <span style="font-size:0.85rem;color:var(--text-secondary)" id="instaProgress">0 / 2,200</span>
+        </div>
+        <div style="background:var(--bg-surface);border-radius:50px;height:8px;overflow:hidden;">
+          <div id="instaBar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:50px;transition:width 0.3s ease;"></div>
+        </div>
+      </div>
+      <div style="margin-top:12px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+          <span style="font-size:0.85rem;color:var(--text-secondary);font-weight:600">트위터 제한</span>
+          <span style="font-size:0.85rem;color:var(--text-secondary)" id="twitterProgress">0 / 280</span>
+        </div>
+        <div style="background:var(--bg-surface);border-radius:50px;height:8px;overflow:hidden;">
+          <div id="twitterBar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--secondary));border-radius:50px;transition:width 0.3s ease;"></div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:24px;">
+        <button class="btn-primary" onclick="copyText()">📋 복사</button>
+        <button class="btn-secondary" onclick="clearText()">🗑️ 지우기</button>
+      </div>
+    </div>
+
+    <!-- AdSense Bottom -->
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+<script>
+  atOptions = {
+    'key' : '45b3896c65f61fa42904ff26143ca550',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/45b3896c65f61fa42904ff26143ca550/invoke.js"></script>
+    </div>
+
+    <!-- SEO Content -->
+    <div style="max-width:760px;margin:40px auto 0;padding:32px;background:var(--bg-card);border-radius:var(--radius-lg);border:1px solid var(--border)">
+      <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:12px">📖 글자수 세기 사용법</h2>
+      <p style="color:var(--text-secondary);line-height:1.8;font-size:0.9rem">
+        위 텍스트 입력창에 글자를 입력하시면 <strong>실시간으로 글자수, 단어수, 문장수, 줄수, 바이트</strong>를 자동으로 계산합니다.
+        SNS 게시물 작성 시 인스타그램(2,200자), 트위터(280자) 글자 제한을 쉽게 확인할 수 있습니다.
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-logo"><span class="logo-icon">🛠️</span><span class="logo-text">툴박스</span></div>
+    <p class="footer-copy">© 2026 툴박스 · 무료 온라인 도구</p>
+  </div>
+</footer>
+
+<script>
+// Theme
+const tt = document.getElementById('themeToggle');
+if (localStorage.getItem('theme') === 'light') { document.body.classList.add('light'); tt.textContent = '☀️'; }
+tt.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  const isLight = document.body.classList.contains('light');
+  tt.textContent = isLight ? '☀️' : '🌙';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+// Counter
+const input = document.getElementById('textInput');
+
+function updateCounts() {
+  const text = input.value;
+  const charCount = text.length;
+  const charNoSpace = text.replace(/\s/g, '').length;
+  const wordCount = text.trim() === '' ? 0 : text.trim().split(/\s+/).filter(w => w !== '').length;
+  const sentenceCount = text.trim() === '' ? 0 : text.split(/[.!?]+/).filter(s => s.trim() !== '').length;
+  const lineCount = text === '' ? 0 : text.split('\n').length;
+  const byteCount = new Blob([text]).size;
+
+  document.getElementById('charCount').textContent = charCount.toLocaleString();
+  document.getElementById('charNoSpaceCount').textContent = charNoSpace.toLocaleString();
+  document.getElementById('wordCount').textContent = wordCount.toLocaleString();
+  document.getElementById('sentenceCount').textContent = sentenceCount.toLocaleString();
+  document.getElementById('lineCount').textContent = lineCount.toLocaleString();
+  document.getElementById('byteCount').textContent = byteCount.toLocaleString();
+
+  // Progress bars
+  const instaPct = Math.min((charCount / 2200) * 100, 100);
+  const twitterPct = Math.min((charCount / 280) * 100, 100);
+  document.getElementById('instaBar').style.width = instaPct + '%';
+  document.getElementById('twitterBar').style.width = twitterPct + '%';
+  document.getElementById('instaBar').style.background = instaPct > 90 ? 'linear-gradient(90deg,#ef4444,#f97316)' : 'linear-gradient(90deg,var(--primary),var(--accent))';
+  document.getElementById('twitterBar').style.background = twitterPct > 90 ? 'linear-gradient(90deg,#ef4444,#f97316)' : 'linear-gradient(90deg,var(--accent),var(--secondary))';
+  document.getElementById('instaProgress').textContent = `${charCount.toLocaleString()} / 2,200`;
+  document.getElementById('twitterProgress').textContent = `${charCount.toLocaleString()} / 280`;
+}
+
+input.addEventListener('input', updateCounts);
+
+function copyText() {
+  navigator.clipboard.writeText(input.value).then(() => {
+    const btn = document.querySelector('.btn-primary');
+    btn.textContent = '✅ 복사됨!';
+    setTimeout(() => btn.textContent = '📋 복사', 2000);
+  });
+}
+
+function clearText() {
+  input.value = '';
+  updateCounts();
+}
+</script>
+
+<!-- Social Bar Ad -->
+<script src="https://pl30449988.effectivecpmnetwork.com/e8/cf/3f/e8cf3fd4d0fa1cf2ede054eed2e044b6.js"></script>
+<!-- Popunder Ad -->
+<script src="https://pl30449989.effectivecpmnetwork.com/3f/ac/ae/3facae89d4680a80fe174eba6f40cd5a.js"></script>
+</body>
+</html>

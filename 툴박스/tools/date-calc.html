@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-1448989198452809">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1448989198452809" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>날짜 계산기 - D-day, 날짜 차이 무료 계산 | 툴박스</title>
+  <meta name="description" content="D-day 계산, 두 날짜 사이의 차이, 기념일까지 남은 날을 무료로 계산해드립니다!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .tab-btns { display:flex; gap:8px; margin-bottom:24px; }
+    .tab-btn {
+      flex:1; padding:10px; border-radius:var(--radius-md);
+      border:1.5px solid var(--border); background:transparent;
+      color:var(--text-secondary); font-family:inherit; font-size:0.9rem; font-weight:600;
+      cursor:pointer; transition:all 0.2s;
+    }
+    .tab-btn.active {
+      background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+      color:white; border-color:var(--primary);
+    }
+    .tab-content { display:none; }
+    .tab-content.active { display:block; }
+    .countdown-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; text-align:center; }
+    .countdown-box {
+      background:var(--bg-surface); border-radius:var(--radius-md);
+      padding:20px 12px; border:1px solid var(--border);
+    }
+    .countdown-num { font-size:2.2rem; font-weight:800; color:var(--primary-light); }
+    .countdown-label { font-size:0.72rem; color:var(--text-muted); font-weight:600; margin-top:4px; }
+  </style>
+</head>
+<body>
+<header class="header">
+  <nav class="nav container">
+    <a href="../index.html" class="nav-logo"><span class="logo-icon">🛠️</span><span class="logo-text">툴박스</span></a>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+  </nav>
+</header>
+
+<main class="tool-page">
+  <div class="container">
+    <a href="../index.html" class="back-btn">← 전체 도구로 돌아가기</a>
+    <div class="tool-page-header">
+      <div style="font-size:3.5rem">📅</div>
+      <h1>날짜 계산기</h1>
+      <p>D-day 카운트다운, 날짜 차이, 기념일 계산을 한 번에!</p>
+    </div>
+
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+      <div class="ad-desktop" style="display:block;">
+<script>
+  atOptions = {
+    'key' : '05f8ecca621b83cf8bfe28d7adb9d842',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/05f8ecca621b83cf8bfe28d7adb9d842/invoke.js"></script>
+      </div>
+    </div>
+
+    <div class="tool-box">
+      <div class="tab-btns">
+        <button class="tab-btn active" onclick="switchTab('dday', this)">📌 D-day 계산</button>
+        <button class="tab-btn" onclick="switchTab('diff', this)">📏 날짜 차이</button>
+        <button class="tab-btn" onclick="switchTab('add', this)">➕ 날짜 더하기</button>
+      </div>
+
+      <!-- D-day Tab -->
+      <div class="tab-content active" id="tab-dday">
+        <div class="form-group">
+          <label class="form-label">목표 날짜</label>
+          <input type="date" class="form-input" id="ddayDate" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">이벤트 이름 (선택)</label>
+          <input type="text" class="form-input" id="ddayName" placeholder="예: 수능, 결혼기념일, 생일..." />
+        </div>
+        <button class="btn-primary" onclick="calcDday()" style="width:100%">📅 D-day 계산하기</button>
+        <div class="result-box" id="ddayResult" style="display:none;">
+          <div id="ddayTitle" style="text-align:center;font-size:1.1rem;font-weight:700;margin-bottom:16px;"></div>
+          <div class="countdown-grid">
+            <div class="countdown-box"><div class="countdown-num" id="ddayNum">-</div><div class="countdown-label">총 일수</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="ddayWeeks">-</div><div class="countdown-label">주</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="ddayMonths">-</div><div class="countdown-label">개월</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="ddayYears">-</div><div class="countdown-label">년</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diff Tab -->
+      <div class="tab-content" id="tab-diff">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="form-group" style="margin:0">
+            <label class="form-label">시작 날짜</label>
+            <input type="date" class="form-input" id="startDate" />
+          </div>
+          <div class="form-group" style="margin:0">
+            <label class="form-label">종료 날짜</label>
+            <input type="date" class="form-input" id="endDate" />
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcDiff()" style="width:100%;margin-top:20px">📏 차이 계산하기</button>
+        <div class="result-box" id="diffResult" style="display:none;">
+          <div class="result-grid">
+            <div class="result-item"><span class="result-num" id="diffDays">-</span><div class="result-label">일</div></div>
+            <div class="result-item"><span class="result-num" id="diffWeeks">-</span><div class="result-label">주</div></div>
+            <div class="result-item"><span class="result-num" id="diffMonths">-</span><div class="result-label">개월</div></div>
+            <div class="result-item"><span class="result-num" id="diffYears">-</span><div class="result-label">년</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Tab -->
+      <div class="tab-content" id="tab-add">
+        <div class="form-group">
+          <label class="form-label">기준 날짜</label>
+          <input type="date" class="form-input" id="baseDate" />
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+          <div class="form-group" style="margin:0">
+            <label class="form-label">년</label>
+            <input type="number" class="form-input" id="addYears" value="0" />
+          </div>
+          <div class="form-group" style="margin:0">
+            <label class="form-label">월</label>
+            <input type="number" class="form-input" id="addMonths" value="0" />
+          </div>
+          <div class="form-group" style="margin:0">
+            <label class="form-label">일</label>
+            <input type="number" class="form-input" id="addDays" value="0" />
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcAdd()" style="width:100%;margin-top:20px">➕ 계산하기</button>
+        <div class="result-box" id="addResult" style="display:none;text-align:center;">
+          <p style="color:var(--text-secondary);margin-bottom:8px;font-size:0.9rem">계산된 날짜</p>
+          <div class="result-num" id="addResultDate" style="font-size:2rem;"></div>
+          <div style="margin-top:8px;color:var(--text-muted);font-size:0.85rem" id="addDayName"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+<script>
+  atOptions = {
+    'key' : '45b3896c65f61fa42904ff26143ca550',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/45b3896c65f61fa42904ff26143ca550/invoke.js"></script>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-logo"><span class="logo-icon">🛠️</span><span class="logo-text">툴박스</span></div>
+    <p class="footer-copy">© 2026 툴박스 · 무료 온라인 도구</p>
+  </div>
+</footer>
+
+<script>
+const tt = document.getElementById('themeToggle');
+if (localStorage.getItem('theme') === 'light') { document.body.classList.add('light'); tt.textContent = '☀️'; }
+tt.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  const isLight = document.body.classList.contains('light');
+  tt.textContent = isLight ? '☀️' : '🌙';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+// Set default dates
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('ddayDate').value = today;
+document.getElementById('startDate').value = today;
+document.getElementById('endDate').value = today;
+document.getElementById('baseDate').value = today;
+
+const DAYS = ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'];
+
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+function calcDday() {
+  const target = new Date(document.getElementById('ddayDate').value);
+  const now = new Date(); now.setHours(0,0,0,0);
+  const diff = Math.round((target - now) / (1000*60*60*24));
+  const name = document.getElementById('ddayName').value || '목표일';
+  
+  let label;
+  if (diff === 0) label = `🎉 오늘이 ${name}입니다!`;
+  else if (diff > 0) label = `📌 ${name}까지 D-${diff}`;
+  else label = `📌 ${name}이(가) D+${Math.abs(diff)} 지났습니다`;
+
+  document.getElementById('ddayTitle').textContent = label;
+  document.getElementById('ddayNum').textContent = Math.abs(diff).toLocaleString();
+  document.getElementById('ddayWeeks').textContent = Math.abs(Math.floor(diff/7)).toLocaleString();
+  document.getElementById('ddayMonths').textContent = Math.abs(Math.floor(diff/30)).toLocaleString();
+  document.getElementById('ddayYears').textContent = Math.abs(Math.floor(diff/365)).toLocaleString();
+  document.getElementById('ddayResult').style.display = 'block';
+}
+
+function calcDiff() {
+  const s = new Date(document.getElementById('startDate').value);
+  const e = new Date(document.getElementById('endDate').value);
+  const diff = Math.round((e - s) / (1000*60*60*24));
+  const absDiff = Math.abs(diff);
+  document.getElementById('diffDays').textContent = absDiff.toLocaleString();
+  document.getElementById('diffWeeks').textContent = Math.floor(absDiff/7).toLocaleString();
+  document.getElementById('diffMonths').textContent = Math.floor(absDiff/30).toLocaleString();
+  document.getElementById('diffYears').textContent = Math.floor(absDiff/365).toLocaleString();
+  document.getElementById('diffResult').style.display = 'block';
+}
+
+function calcAdd() {
+  const base = new Date(document.getElementById('baseDate').value);
+  const y = parseInt(document.getElementById('addYears').value) || 0;
+  const m = parseInt(document.getElementById('addMonths').value) || 0;
+  const d = parseInt(document.getElementById('addDays').value) || 0;
+  base.setFullYear(base.getFullYear() + y);
+  base.setMonth(base.getMonth() + m);
+  base.setDate(base.getDate() + d);
+  const yy = base.getFullYear();
+  const mm = String(base.getMonth()+1).padStart(2,'0');
+  const dd = String(base.getDate()).padStart(2,'0');
+  document.getElementById('addResultDate').textContent = `${yy}년 ${mm}월 ${dd}일`;
+  document.getElementById('addDayName').textContent = DAYS[base.getDay()];
+  document.getElementById('addResult').style.display = 'block';
+}
+</script>
+
+<!-- Social Bar Ad -->
+<script src="https://pl30449988.effectivecpmnetwork.com/e8/cf/3f/e8cf3fd4d0fa1cf2ede054eed2e044b6.js"></script>
+<!-- Popunder Ad -->
+<script src="https://pl30449989.effectivecpmnetwork.com/3f/ac/ae/3facae89d4680a80fe174eba6f40cd5a.js"></script>
+</body>
+</html>

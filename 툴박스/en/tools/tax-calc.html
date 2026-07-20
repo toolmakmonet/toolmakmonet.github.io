@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-1448989198452809">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1448989198452809" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Korean Salary & Tax Calculator - Net Pay After Taxes | Toolbox</title>
+  <meta name="description" content="Calculate your net monthly take-home salary after deductions for Korean National Pension, Health Insurance, and Income Tax." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../style.css" />
+  <style>
+    .deduction-item {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:12px 0; border-bottom:1px solid var(--border); font-size:0.9rem;
+    }
+    .deduction-item:last-child { border:none; }
+    .deduction-label { color:var(--text-secondary); font-weight:500; }
+    .deduction-amount { font-weight:700; }
+    .deduction-amount.negative { color:#ef4444; }
+    .deduction-amount.total { color:var(--primary-light); font-size:1.1rem; }
+    .take-home-badge {
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      border-radius:var(--radius-lg); padding:24px; text-align:center; margin-bottom:16px;
+    }
+    .take-home-badge .label { font-size:0.85rem; opacity:0.8; margin-bottom:6px; }
+    .take-home-badge .amount { font-size:2.5rem; font-weight:800; }
+  </style>
+</head>
+<body>
+<header class="header">
+  <nav class="nav container">
+    <a href="../index.html" class="nav-logo"><span class="logo-icon">🛠️</span><span class="logo-text">Toolbox</span></a>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+  </nav>
+</header>
+
+<main class="tool-page">
+  <div class="container">
+    <a href="../index.html" class="back-btn">← Back to All Tools</a>
+    <div class="tool-page-header">
+      <div style="font-size:3.5rem">💰</div>
+      <h1>Salary & Tax Calculator (KRW)</h1>
+      <p>Calculate your net take-home salary after Korean tax and insurance deductions</p>
+    </div>
+
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+      <div class="ad-desktop" style="display:block;">
+<script>
+  atOptions = {
+    'key' : '05f8ecca621b83cf8bfe28d7adb9d842',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/05f8ecca621b83cf8bfe28d7adb9d842/invoke.js"></script>
+      </div>
+    </div>
+
+    <div class="tool-box">
+      <div class="form-group">
+        <label class="form-label">Annual Salary (in 10,000 KRW)</label>
+        <input type="number" class="form-input" id="salary" placeholder="e.g. 4000 (meaning 40 Million KRW)" min="0" />
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="form-group" style="margin:0">
+          <label class="form-label">Number of Dependents</label>
+          <select class="form-select" id="dependents">
+            <option value="1">1 Person (Self Only)</option>
+            <option value="2">2 People</option>
+            <option value="3">3 People</option>
+            <option value="4">4 People</option>
+            <option value="5">5 People or more</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin:0">
+          <label class="form-label">Children (under 20)</label>
+          <select class="form-select" id="children">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3 or more</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="calcSalary()" style="width:100%;margin-top:4px">💰 Calculate Net Pay</button>
+
+      <div id="result" style="display:none;">
+        <div class="result-box">
+          <div class="take-home-badge">
+            <div class="label">Net Monthly Take-home Pay</div>
+            <div class="amount" id="takeHome">-</div>
+          </div>
+
+          <div id="deductions">
+            <div class="deduction-item">
+              <span class="deduction-label">💵 Gross Monthly Pay (Before Tax)</span>
+              <span class="deduction-amount" id="monthlyGross">-</span>
+            </div>
+            <div class="deduction-item">
+              <span class="deduction-label">🏥 National Pension (4.5%)</span>
+              <span class="deduction-amount negative" id="pension">-</span>
+            </div>
+            <div class="deduction-item">
+              <span class="deduction-label">💊 Health Insurance (3.545%)</span>
+              <span class="deduction-amount negative" id="health">-</span>
+            </div>
+            <div class="deduction-item">
+              <span class="deduction-label">🦷 Long-term Care Insurance (Health Insurance × 12.95%)</span>
+              <span class="deduction-amount negative" id="ltc">-</span>
+            </div>
+            <div class="deduction-item">
+              <span class="deduction-label">💼 Employment Insurance (0.9%)</span>
+              <span class="deduction-amount negative" id="employment">-</span>
+            </div>
+            <div class="deduction-item">
+              <span class="deduction-label">📋 National Income Tax</span>
+              <span class="deduction-amount negative" id="incomeTax">-</span>
+            </div>
+            <div class="deduction-item">
+              <span class="deduction-label">🏙️ Local Income Tax (Income Tax × 10%)</span>
+              <span class="deduction-amount negative" id="localTax">-</span>
+            </div>
+            <div class="deduction-item" style="padding-top:16px;border-top:2px solid var(--primary)">
+              <span style="font-weight:800;font-size:1rem">💳 Total Deductions</span>
+              <span class="deduction-amount negative" id="totalDeduction" style="font-size:1.1rem">-</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-grid" style="margin-top:16px;">
+          <div class="result-item">
+            <span class="result-num" id="yearlyTake">-</span>
+            <div class="result-label">Net Annual Pay (10,000 KRW)</div>
+          </div>
+          <div class="result-item">
+            <span class="result-num" id="taxRate">-</span>
+            <div class="result-label">Effective Tax Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+<script>
+  atOptions = {
+    'key' : '45b3896c65f61fa42904ff26143ca550',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/45b3896c65f61fa42904ff26143ca550/invoke.js"></script>
+    </div>
+
+    <div style="max-width:760px;margin:40px auto 0;padding:32px;background:var(--bg-card);border-radius:var(--radius-lg);border:1px solid var(--border)">
+      <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:12px">⚠️ Note on Calculation</h2>
+      <p style="color:var(--text-secondary);line-height:1.8;font-size:0.85rem">
+        This calculator uses the 2024 Korean statutory insurance rates and simplified tax tables to estimate your net salary. Actual take-home pay may vary depending on corporate welfare benefits, non-taxable allowances, and end-of-year tax adjustments.
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-logo"><span class="logo-icon">🛠️</span><span class="logo-text">Toolbox</span></div>
+    <p class="footer-copy">© 2026 Toolbox · Free Online Utility Tools</p>
+  </div>
+</footer>
+
+<script>
+const tt = document.getElementById('themeToggle');
+if (localStorage.getItem('theme') === 'light') { document.body.classList.add('light'); tt.textContent = '☀️'; }
+tt.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  const isLight = document.body.classList.contains('light');
+  tt.textContent = isLight ? '☀️' : '🌙';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+function fmt(n) { return Math.round(n).toLocaleString() + ' KRW'; }
+
+// Simplified income tax table (monthly gross in won)
+function getIncomeTax(monthly, dependents) {
+  const d = parseInt(dependents);
+  if (monthly <= 1060000) return 0;
+  if (monthly <= 1500000) return Math.round(monthly * 0.006);
+  if (monthly <= 3000000) return Math.round(monthly * 0.015);
+  if (monthly <= 4500000) return Math.round(monthly * 0.024);
+  if (monthly <= 7800000) return Math.round(monthly * 0.035);
+  if (monthly <= 12000000) return Math.round(monthly * 0.048);
+  return Math.round(monthly * 0.062);
+}
+
+function calcSalary() {
+  const annual = parseFloat(document.getElementById('salary').value) * 10000;
+  if (!annual || annual <= 0) { alert('Please enter your annual salary.'); return; }
+  const dependents = document.getElementById('dependents').value;
+  const monthly = annual / 12;
+
+  const pension = Math.round(monthly * 0.045);
+  const health = Math.round(monthly * 0.03545);
+  const ltc = Math.round(health * 0.1295);
+  const employment = Math.round(monthly * 0.009);
+  const incomeTax = getIncomeTax(monthly, dependents);
+  const localTax = Math.round(incomeTax * 0.1);
+  const totalDeduction = pension + health + ltc + employment + incomeTax + localTax;
+  const takeHome = monthly - totalDeduction;
+
+  document.getElementById('monthlyGross').textContent = fmt(monthly);
+  document.getElementById('pension').textContent = '-' + fmt(pension);
+  document.getElementById('health').textContent = '-' + fmt(health);
+  document.getElementById('ltc').textContent = '-' + fmt(ltc);
+  document.getElementById('employment').textContent = '-' + fmt(employment);
+  document.getElementById('incomeTax').textContent = '-' + fmt(incomeTax);
+  document.getElementById('localTax').textContent = '-' + fmt(localTax);
+  document.getElementById('totalDeduction').textContent = '-' + fmt(totalDeduction);
+  document.getElementById('takeHome').textContent = fmt(takeHome);
+  document.getElementById('yearlyTake').textContent = Math.round(takeHome * 12 / 10000).toLocaleString() + '万';
+  document.getElementById('taxRate').textContent = (totalDeduction / monthly * 100).toFixed(1) + '%';
+
+  const resultEl = document.getElementById('result');
+  resultEl.style.display = 'block';
+  resultEl.scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+</script>
+
+<!-- Social Bar Ad -->
+<script src="https://pl30449988.effectivecpmnetwork.com/e8/cf/3f/e8cf3fd4d0fa1cf2ede054eed2e044b6.js"></script>
+<!-- Popunder Ad -->
+<script src="https://pl30449989.effectivecpmnetwork.com/3f/ac/ae/3facae89d4680a80fe174eba6f40cd5a.js"></script>
+</body>
+</html>

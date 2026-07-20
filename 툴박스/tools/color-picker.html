@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-1448989198452809">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1448989198452809" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>색상 코드 변환기 - HEX, RGB, HSL 무료 변환 | 툴박스</title>
+  <meta name="description" content="원하는 색상을 선택하면 HEX, RGB, HSL 코드로 즉시 변환해드립니다. 무료 컬러 피커 도구!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .color-preview {
+      width: 100%; height: 160px;
+      border-radius: var(--radius-md);
+      margin-bottom: 24px;
+      border: 2px solid var(--border);
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+    }
+    .code-box {
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(0,0,0,0.2); padding: 16px 20px;
+      border-radius: var(--radius-sm); border: 1px solid var(--border);
+      margin-bottom: 12px; font-family: monospace; font-size: 1.1rem;
+    }
+    body.light .code-box { background: rgba(255,255,255,0.6); }
+    .code-label { font-family: 'Pretendard', sans-serif; font-size: 0.85rem; color: var(--text-secondary); font-weight: 600; margin-right: 12px; width: 40px; display: inline-block; }
+    .copy-icon { cursor: pointer; color: var(--primary-light); transition: transform 0.2s; }
+    .copy-icon:hover { transform: scale(1.2); }
+  </style>
+</head>
+<body>
+<header class="header">
+  <nav class="nav container">
+    <a href="../index.html" class="nav-logo"><span class="logo-icon">🛠️</span><span class="logo-text">툴박스</span></a>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+  </nav>
+</header>
+
+<main class="tool-page">
+  <div class="container">
+    <a href="../index.html" class="back-btn">← 전체 도구로 돌아가기</a>
+    <div class="tool-page-header">
+      <div style="font-size:3.5rem" class="tool-emoji">🎨</div>
+      <h1>색상 코드 변환기</h1>
+      <p>컬러를 선택하고 HEX, RGB, HSL 코드를 복사하세요</p>
+    </div>
+
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+      <div class="ad-desktop" style="display:block;">
+<script>
+  atOptions = {
+    'key' : '05f8ecca621b83cf8bfe28d7adb9d842',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/05f8ecca621b83cf8bfe28d7adb9d842/invoke.js"></script>
+      </div>
+    </div>
+
+    <div class="tool-box glass-card">
+      <div class="color-preview" id="colorPreview" style="background-color: #6366f1;"></div>
+      
+      <div style="display:flex;gap:16px;align-items:center;margin-bottom:32px;">
+        <input type="color" id="colorPicker" value="#6366f1" style="width:60px;height:60px;border:none;border-radius:8px;cursor:pointer;background:none;" oninput="updateColors()" />
+        <div style="flex:1;">
+          <label class="form-label" style="margin-bottom:4px;">색상 선택기</label>
+          <p style="font-size:0.85rem;color:var(--text-muted)">왼쪽의 색상 상자를 클릭하여 원하는 컬러를 고르세요.</p>
+        </div>
+      </div>
+
+      <div class="code-box">
+        <div><span class="code-label">HEX</span><span id="hexCode" style="color:var(--text-primary);font-weight:700">#6366F1</span></div>
+        <div class="copy-icon" onclick="copyCode('hexCode')" title="복사">📋</div>
+      </div>
+      <div class="code-box">
+        <div><span class="code-label">RGB</span><span id="rgbCode" style="color:var(--text-primary);font-weight:700">rgb(99, 102, 241)</span></div>
+        <div class="copy-icon" onclick="copyCode('rgbCode')" title="복사">📋</div>
+      </div>
+      <div class="code-box">
+        <div><span class="code-label">HSL</span><span id="hslCode" style="color:var(--text-primary);font-weight:700">hsl(239, 82%, 67%)</span></div>
+        <div class="copy-icon" onclick="copyCode('hslCode')" title="복사">📋</div>
+      </div>
+    </div>
+
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+<script>
+  atOptions = {
+    'key' : '45b3896c65f61fa42904ff26143ca550',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/45b3896c65f61fa42904ff26143ca550/invoke.js"></script>
+    </div>
+  </div>
+</main>
+
+<script src="../main.js"></script>
+<script>
+function hexToRgb(hex) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return {r, g, b};
+}
+
+function rgbToHsl(r, g, b) {
+  r /= 255; g /= 255; b /= 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h, s, l = (max + min) / 2;
+
+  if (max === min) {
+    h = s = 0;
+  } else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+    h /= 6;
+  }
+  return {
+    h: Math.round(h * 360),
+    s: Math.round(s * 100),
+    l: Math.round(l * 100)
+  };
+}
+
+function updateColors() {
+  const hex = document.getElementById('colorPicker').value;
+  document.getElementById('colorPreview').style.backgroundColor = hex;
+  document.getElementById('hexCode').textContent = hex.toUpperCase();
+  
+  const rgb = hexToRgb(hex);
+  document.getElementById('rgbCode').textContent = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+  
+  const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+  document.getElementById('hslCode').textContent = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+}
+
+function copyCode(id) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    alert(text + " 복사되었습니다!");
+  });
+}
+</script>
+
+<!-- Social Bar Ad -->
+<script src="https://pl30449988.effectivecpmnetwork.com/e8/cf/3f/e8cf3fd4d0fa1cf2ede054eed2e044b6.js"></script>
+<!-- Popunder Ad -->
+<script src="https://pl30449989.effectivecpmnetwork.com/3f/ac/ae/3facae89d4680a80fe174eba6f40cd5a.js"></script>
+</body>
+</html>

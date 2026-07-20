@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-1448989198452809">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1448989198452809" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR 코드 생성기 - URL, 텍스트 무료 변환 | 툴박스</title>
+  <meta name="description" content="웹사이트 URL, 연락처, 텍스트를 입력하면 무료로 QR 코드를 즉시 생성하고 다운로드할 수 있습니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    #qrcode {
+      display: flex; justify-content: center; align-items: center;
+      background: white; padding: 24px; border-radius: var(--radius-md);
+      margin: 32px auto; width: fit-content; min-height: 256px; min-width: 256px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    #qrcode img { display: block; margin: 0 auto; }
+  </style>
+</head>
+<body>
+<header class="header">
+  <nav class="nav container">
+    <a href="../index.html" class="nav-logo"><span class="logo-icon">🛠️</span><span class="logo-text">툴박스</span></a>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+  </nav>
+</header>
+
+<main class="tool-page">
+  <div class="container">
+    <a href="../index.html" class="back-btn">← 전체 도구로 돌아가기</a>
+    <div class="tool-page-header">
+      <div style="font-size:3.5rem" class="tool-emoji">📱</div>
+      <h1>QR 코드 생성기</h1>
+      <p>URL이나 텍스트를 고화질 QR코드로 변환하고 저장하세요</p>
+    </div>
+
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+      <div class="ad-desktop" style="display:block;">
+<script>
+  atOptions = {
+    'key' : '05f8ecca621b83cf8bfe28d7adb9d842',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/05f8ecca621b83cf8bfe28d7adb9d842/invoke.js"></script>
+      </div>
+    </div>
+
+    <div class="tool-box glass-card">
+      <div class="form-group">
+        <label class="form-label">URL 또는 텍스트 입력</label>
+        <input type="text" class="form-input" id="qrText" placeholder="예: https://google.com 또는 인사말" onkeypress="if(event.key === 'Enter') generateQR()" />
+      </div>
+
+      <button class="btn-primary" onclick="generateQR()" style="width:100%">📱 QR 코드 만들기</button>
+
+      <div id="qrResult" style="display:none; text-align:center;">
+        <div id="qrcode"></div>
+        <button class="btn-secondary" onclick="downloadQR()">⬇️ 이미지 다운로드</button>
+      </div>
+    </div>
+
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+<script>
+  atOptions = {
+    'key' : '45b3896c65f61fa42904ff26143ca550',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/45b3896c65f61fa42904ff26143ca550/invoke.js"></script>
+    </div>
+  </div>
+</main>
+
+<script src="../main.js"></script>
+<script>
+let qrcodeObj = null;
+
+function generateQR() {
+  const text = document.getElementById('qrText').value;
+  if(!text) { alert("URL이나 텍스트를 입력해주세요."); return; }
+  
+  const qrDiv = document.getElementById('qrcode');
+  qrDiv.innerHTML = ""; // 초기화
+  
+  qrcodeObj = new QRCode(qrDiv, {
+    text: text,
+    width: 256,
+    height: 256,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+  });
+  
+  const res = document.getElementById('qrResult');
+  res.style.display = 'block';
+  res.classList.add('scroll-reveal');
+  setTimeout(()=>res.classList.add('visible'), 50);
+}
+
+function downloadQR() {
+  const img = document.querySelector('#qrcode img');
+  if(!img || !img.src) {
+    // 간혹 img 렌더링 전 canvas만 있는 경우 대비
+    const canvas = document.querySelector('#qrcode canvas');
+    if(canvas) {
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL("image/png");
+      link.download = 'qrcode.png';
+      link.click();
+    }
+    return;
+  }
+  const link = document.createElement('a');
+  link.href = img.src;
+  link.download = 'qrcode.png';
+  link.click();
+}
+</script>
+
+<!-- Social Bar Ad -->
+<script src="https://pl30449988.effectivecpmnetwork.com/e8/cf/3f/e8cf3fd4d0fa1cf2ede054eed2e044b6.js"></script>
+<!-- Popunder Ad -->
+<script src="https://pl30449989.effectivecpmnetwork.com/3f/ac/ae/3facae89d4680a80fe174eba6f40cd5a.js"></script>
+</body>
+</html>

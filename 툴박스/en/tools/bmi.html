@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-1448989198452809">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1448989198452809" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMI Calculator - Free Online Body Mass Index | Toolbox</title>
+  <meta name="description" content="Calculate your BMI and check your obesity level for free. Find out your normal weight range based on height." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../style.css" />
+  <style>
+    .bmi-gauge { position: relative; margin: 24px 0; }
+    .bmi-bar {
+      height: 24px;
+      border-radius: 50px;
+      background: linear-gradient(90deg, #3b82f6 0%, #22c55e 30%, #eab308 60%, #f97316 80%, #ef4444 100%);
+      position: relative;
+    }
+    .bmi-pointer {
+      position: absolute;
+      top: -8px;
+      width: 4px;
+      height: 40px;
+      background: white;
+      border-radius: 2px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      transition: left 0.8s cubic-bezier(0.4,0,0.2,1);
+      left: 0%;
+    }
+    .bmi-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+    .bmi-labels span { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; }
+    .bmi-result-badge {
+      display: inline-block;
+      padding: 8px 24px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    .ideal-range {
+      background: rgba(34,197,94,0.1);
+      border: 1.5px solid rgba(34,197,94,0.3);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+<header class="header">
+  <nav class="nav container">
+    <a href="../index.html" class="nav-logo"><span class="logo-icon">🛠️</span><span class="logo-text">Toolbox</span></a>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+  </nav>
+</header>
+
+<main class="tool-page">
+  <div class="container">
+    <a href="../index.html" class="back-btn">← Back to All Tools</a>
+    <div class="tool-page-header">
+      <div style="font-size:3.5rem">⚖️</div>
+      <h1>BMI Calculator</h1>
+      <p>Calculate your Body Mass Index (BMI) and health category for free</p>
+    </div>
+
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+      <div class="ad-desktop" style="display:block;">
+<script>
+  atOptions = {
+    'key' : '05f8ecca621b83cf8bfe28d7adb9d842',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/05f8ecca621b83cf8bfe28d7adb9d842/invoke.js"></script>
+      </div>
+    </div>
+
+    <div class="tool-box">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+        <div class="form-group" style="margin:0">
+          <label class="form-label">Height (cm)</label>
+          <input type="number" class="form-input" id="height" placeholder="e.g. 170" min="100" max="250" />
+        </div>
+        <div class="form-group" style="margin:0">
+          <label class="form-label">Weight (kg)</label>
+          <input type="number" class="form-input" id="weight" placeholder="e.g. 65" min="20" max="300" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Gender</label>
+        <div style="display:flex;gap:12px;">
+          <label style="flex:1;cursor:pointer">
+            <input type="radio" name="gender" value="male" checked style="display:none" />
+            <div class="gender-btn" id="maleBtn" style="text-align:center;padding:12px;border-radius:var(--radius-md);border:2px solid var(--primary);background:rgba(99,102,241,0.1);font-weight:700;transition:all 0.2s;">👨 Male</div>
+          </label>
+          <label style="flex:1;cursor:pointer">
+            <input type="radio" name="gender" value="female" style="display:none" />
+            <div class="gender-btn" id="femaleBtn" style="text-align:center;padding:12px;border-radius:var(--radius-md);border:2px solid var(--border);font-weight:700;transition:all 0.2s;">👩 Female</div>
+          </label>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="calcBMI()" style="width:100%">⚖️ Calculate BMI</button>
+
+      <div class="result-box" id="result" style="display:none;">
+        <div style="text-align:center;margin-bottom:24px;">
+          <span class="result-num" id="bmiValue" style="font-size:3rem;display:block;"></span>
+          <div class="result-label">BMI Score</div>
+          <div id="bmiCategory" class="bmi-result-badge" style="margin-top:12px;"></div>
+        </div>
+
+        <div class="bmi-gauge">
+          <div class="bmi-bar">
+            <div class="bmi-pointer" id="bmiPointer"></div>
+          </div>
+          <div class="bmi-labels">
+            <span>Underweight<br/>~18.5</span>
+            <span>Normal<br/>18.5~23</span>
+            <span>Overweight<br/>23~25</span>
+            <span>Obese<br/>25~</span>
+          </div>
+        </div>
+
+        <div class="result-grid" style="margin-top:20px;">
+          <div class="result-item">
+            <span class="result-num" id="idealWeight">-</span>
+            <div class="result-label">Ideal Weight (kg)</div>
+          </div>
+          <div class="result-item">
+            <span class="result-num" id="weightDiff">-</span>
+            <div class="result-label">Difference (kg)</div>
+          </div>
+        </div>
+
+        <div class="ideal-range">
+          <p style="font-size:0.9rem;color:var(--text-secondary);margin:0">
+            ✅ <strong style="color:var(--text-primary)" id="idealRange">-</strong> is the normal weight range for your height.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+<script>
+  atOptions = {
+    'key' : '45b3896c65f61fa42904ff26143ca550',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/45b3896c65f61fa42904ff26143ca550/invoke.js"></script>
+    </div>
+
+    <div style="max-width:760px;margin:40px auto 0;padding:32px;background:var(--bg-card);border-radius:var(--radius-lg);border:1px solid var(--border)">
+      <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:16px">📊 BMI Reference Table</h2>
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border)">
+              <th style="padding:10px;text-align:left;color:var(--text-secondary)">BMI</th>
+              <th style="padding:10px;text-align:left;color:var(--text-secondary)">Classification</th>
+              <th style="padding:10px;text-align:left;color:var(--text-secondary)">Health Risk</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px">~ 18.4</td><td style="padding:10px">Underweight</td><td style="padding:10px;color:#3b82f6">Low</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px">18.5 ~ 22.9</td><td style="padding:10px">Normal Weight</td><td style="padding:10px;color:#22c55e">Normal</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px">23.0 ~ 24.9</td><td style="padding:10px">Overweight</td><td style="padding:10px;color:#eab308">Increased</td></tr>
+            <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px">25.0 ~ 29.9</td><td style="padding:10px">Class 1 Obesity</td><td style="padding:10px;color:#f97316">High</td></tr>
+            <tr><td style="padding:10px">30.0 ~</td><td style="padding:10px">Class 2 Obesity</td><td style="padding:10px;color:#ef4444">Very High</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-logo"><span class="logo-icon">🛠️</span><span class="logo-text">Toolbox</span></div>
+    <p class="footer-copy">© 2026 Toolbox · Free Online Utility Tools</p>
+  </div>
+</footer>
+
+<script>
+const tt = document.getElementById('themeToggle');
+if (localStorage.getItem('theme') === 'light') { document.body.classList.add('light'); tt.textContent = '☀️'; }
+tt.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  const isLight = document.body.classList.contains('light');
+  tt.textContent = isLight ? '☀️' : '🌙';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+// Gender UI
+document.querySelectorAll('input[name="gender"]').forEach(radio => {
+  radio.addEventListener('change', () => {
+    const male = document.getElementById('maleBtn');
+    const female = document.getElementById('femaleBtn');
+    if (radio.value === 'male') {
+      male.style.borderColor = 'var(--primary)';
+      male.style.background = 'rgba(99,102,241,0.1)';
+      female.style.borderColor = 'var(--border)';
+      female.style.background = 'transparent';
+    } else {
+      female.style.borderColor = 'var(--secondary)';
+      female.style.background = 'rgba(236,72,153,0.1)';
+      male.style.borderColor = 'var(--border)';
+      male.style.background = 'transparent';
+    }
+  });
+});
+
+function calcBMI() {
+  const h = parseFloat(document.getElementById('height').value);
+  const w = parseFloat(document.getElementById('weight').value);
+  if (!h || !w || h < 100 || w < 10) {
+    alert('Please enter your height and weight correctly.');
+    return;
+  }
+  const hm = h / 100;
+  const bmi = w / (hm * hm);
+  const bmiRound = Math.round(bmi * 10) / 10;
+
+  let category, color, pointerPct;
+  if (bmi < 18.5) {
+    category = 'Underweight 🔵'; color = '#3b82f6'; pointerPct = (bmi / 18.5) * 25;
+  } else if (bmi < 23) {
+    category = 'Normal ✅'; color = '#22c55e'; pointerPct = 25 + ((bmi - 18.5) / 4.5) * 25;
+  } else if (bmi < 25) {
+    category = 'Overweight ⚠️'; color = '#eab308'; pointerPct = 50 + ((bmi - 23) / 2) * 20;
+  } else if (bmi < 30) {
+    category = 'Obese (Class 1) 🔴'; color = '#f97316'; pointerPct = 70 + ((bmi - 25) / 5) * 20;
+  } else {
+    category = 'Obese (Class 2) 🔴'; color = '#ef4444'; pointerPct = 90 + Math.min((bmi - 30) / 10, 1) * 10;
+  }
+
+  const idealMin = Math.round(18.5 * hm * hm * 10) / 10;
+  const idealMax = Math.round(23 * hm * hm * 10) / 10;
+  const idealMid = Math.round((idealMin + idealMax) / 2 * 10) / 10;
+  const diff = Math.round((w - idealMid) * 10) / 10;
+
+  document.getElementById('bmiValue').textContent = bmiRound;
+  const cat = document.getElementById('bmiCategory');
+  cat.textContent = category;
+  cat.style.background = color + '22';
+  cat.style.color = color;
+  cat.style.border = `2px solid ${color}44`;
+  document.getElementById('bmiPointer').style.left = `calc(${Math.min(Math.max(pointerPct, 2), 97)}% - 2px)`;
+  document.getElementById('idealWeight').textContent = idealMid;
+  document.getElementById('weightDiff').textContent = (diff > 0 ? '+' : '') + diff;
+  document.getElementById('weightDiff').style.color = diff > 2 ? '#ef4444' : diff < -2 ? '#3b82f6' : '#22c55e';
+  document.getElementById('idealRange').textContent = `${idealMin}kg ~ ${idealMax}kg`;
+
+  const resultEl = document.getElementById('result');
+  resultEl.style.display = 'block';
+  resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+
+<!-- Social Bar Ad -->
+<script src="https://pl30449988.effectivecpmnetwork.com/e8/cf/3f/e8cf3fd4d0fa1cf2ede054eed2e044b6.js"></script>
+<!-- Popunder Ad -->
+<script src="https://pl30449989.effectivecpmnetwork.com/3f/ac/ae/3facae89d4680a80fe174eba6f40cd5a.js"></script>
+</body>
+</html>

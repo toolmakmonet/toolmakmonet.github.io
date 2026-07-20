@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-1448989198452809">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1448989198452809" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>대소문자 변환기 - 영문 대문자 소문자 무료 변환 | 툴박스</title>
+  <meta name="description" content="영문 텍스트를 모두 대문자, 모두 소문자, 첫 글자만 대문자 등으로 클릭 한 번에 변환해드립니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+<header class="header">
+  <nav class="nav container">
+    <a href="../index.html" class="nav-logo"><span class="logo-icon">🛠️</span><span class="logo-text">툴박스</span></a>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+  </nav>
+</header>
+
+<main class="tool-page">
+  <div class="container">
+    <a href="../index.html" class="back-btn">← 전체 도구로 돌아가기</a>
+    <div class="tool-page-header">
+      <div style="font-size:3.5rem" class="tool-emoji">🔤</div>
+      <h1>대소문자 변환기</h1>
+      <p>영어 텍스트의 대소문자를 원하는 형식으로 즉시 변환</p>
+    </div>
+
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+      <div class="ad-desktop" style="display:block;">
+<script>
+  atOptions = {
+    'key' : '05f8ecca621b83cf8bfe28d7adb9d842',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/05f8ecca621b83cf8bfe28d7adb9d842/invoke.js"></script>
+      </div>
+    </div>
+
+    <div class="tool-box glass-card">
+      <div class="form-group">
+        <textarea class="form-textarea" id="inputText" placeholder="여기에 영어 텍스트를 입력하세요..." style="min-height:200px"></textarea>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:24px;">
+        <button class="btn-secondary" onclick="convert('upper')">모두 대문자로</button>
+        <button class="btn-secondary" onclick="convert('lower')">모두 소문자로</button>
+        <button class="btn-secondary" onclick="convert('sentence')">문장 첫 글자만</button>
+        <button class="btn-secondary" onclick="convert('title')">단어 첫 글자만</button>
+        <button class="btn-secondary" onclick="convert('camel')">camelCase</button>
+        <button class="btn-secondary" onclick="convert('snake')">snake_case</button>
+      </div>
+
+      <div style="display:flex;gap:12px;">
+        <button class="btn-primary" onclick="copyText()" style="flex:2" id="copyBtn">📋 결과 복사하기</button>
+        <button class="btn-secondary" onclick="clearText()" style="flex:1">🗑️ 초기화</button>
+      </div>
+    </div>
+
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+<script>
+  atOptions = {
+    'key' : '45b3896c65f61fa42904ff26143ca550',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/45b3896c65f61fa42904ff26143ca550/invoke.js"></script>
+    </div>
+  </div>
+</main>
+
+<script src="../main.js"></script>
+<script>
+const input = document.getElementById('inputText');
+
+function convert(type) {
+  let text = input.value;
+  if(!text) return;
+  
+  if(type === 'upper') {
+    text = text.toUpperCase();
+  } else if(type === 'lower') {
+    text = text.toLowerCase();
+  } else if(type === 'sentence') {
+    text = text.toLowerCase().replace(/(^\s*\w|[\.\!\?]\s*\w)/g, c => c.toUpperCase());
+  } else if(type === 'title') {
+    text = text.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+  } else if(type === 'camel') {
+    text = text.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) => {
+      if (+match === 0) return "";
+      return index === 0 ? match.toLowerCase() : match.toUpperCase();
+    });
+  } else if(type === 'snake') {
+    text = text.replace(/\W+/g, " ").split(/ |\B(?=[A-Z])/).map(w => w.toLowerCase()).join('_');
+  }
+  
+  input.value = text;
+}
+
+function copyText() {
+  if(!input.value) return;
+  navigator.clipboard.writeText(input.value).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✅ 복사 완료!';
+    setTimeout(() => btn.textContent = '📋 결과 복사하기', 2000);
+  });
+}
+
+function clearText() {
+  input.value = '';
+}
+</script>
+
+<!-- Social Bar Ad -->
+<script src="https://pl30449988.effectivecpmnetwork.com/e8/cf/3f/e8cf3fd4d0fa1cf2ede054eed2e044b6.js"></script>
+<!-- Popunder Ad -->
+<script src="https://pl30449989.effectivecpmnetwork.com/3f/ac/ae/3facae89d4680a80fe174eba6f40cd5a.js"></script>
+</body>
+</html>

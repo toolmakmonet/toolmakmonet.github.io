@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script>
+    // Language detection and auto-redirect
+    const userLang = navigator.language || navigator.userLanguage;
+    const savedLang = localStorage.getItem('lang');
+    if (!savedLang) {
+      if (!userLang.startsWith('ko')) {
+        localStorage.setItem('lang', 'en');
+        window.location.href = './en/index.html';
+      } else {
+        localStorage.setItem('lang', 'ko');
+      }
+    } else if (savedLang === 'en') {
+      window.location.href = './en/index.html';
+    }
+  </script>
+  <meta name="google-adsense-account" content="ca-pub-1448989198452809">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1448989198452809" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>툴박스 - 무료 온라인 도구 모음 | 일상의 편리함</title>
+  <meta name="description" content="글자수 세기, 단위 변환, 날짜 계산, BMI, 비밀번호 생성 등 10가지 이상의 온라인 도구를 가입 없이 평생 무료로 사용하세요." />
+  <meta name="keywords" content="온라인 도구, 글자수 세기, BMI 계산기, 연봉 계산기, 날짜 계산기, 무료 툴" />
+  <meta property="og:title" content="툴박스 - 무료 온라인 도구 모음" />
+  <meta property="og:description" content="광고와 가입 없이 쾌적하게 사용하는 프리미엄 무료 온라인 도구 모음" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="header" id="header">
+  <nav class="nav container">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-icon">🛠️</span>
+      <span class="logo-text">툴박스</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#tools">모든 도구</a></li>
+      <li><a href="#popular">인기 도구</a></li>
+      <li><a href="./en/index.html" class="lang-link" onclick="localStorage.setItem('lang', 'en')">🌐 EN</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" title="다크/라이트 모드">🌙</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-badge">✨ V2.0 프리미엄 업데이트 완료!</div>
+    <h1 class="hero-title">
+      필요한 모든 도구,<br/>
+      <span class="gradient-text">완전 무료로 평생</span>
+    </h1>
+    <p class="hero-sub">가입 없음. 결제 없음. 오직 완벽한 기능만 제공합니다.</p>
+    <div class="hero-search">
+      <input type="text" id="searchInput" placeholder="검색어를 입력하세요 (예: 글자수, BMI, 나이)" />
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">10+</span><span class="stat-label">무료 도구</span></div>
+      <div class="stat"><span class="stat-num">0원</span><span class="stat-label">평생 무료</span></div>
+      <div class="stat"><span class="stat-num">1s</span><span class="stat-label">초고속 로딩</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="adsense-zone container"><div class="adsense-placeholder">📢 광고 영역 (Google AdSense)</div></div>
+
+<section class="section" id="popular">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">🔥 HOT</span>
+      <h2 class="section-title">가장 많이 찾는 도구</h2>
+      <p class="section-sub">사용자들이 가장 많이 사랑하는 베스트 도구 모음</p>
+    </div>
+    
+    <div class="tools-grid">
+      <a href="tools/char-counter.html" class="tool-card glass-card scroll-reveal" data-tags="글자수 카운터 텍스트 글자 단어 인스타">
+        <span class="tool-emoji">📝</span>
+        <h3 class="tool-name">글자수 세기</h3>
+        <p class="tool-desc">공백 포함/제외, 단어수, 바이트 실시간 계산</p>
+        <div class="tool-tags"><span>텍스트</span><span>1위</span></div>
+      </a>
+      
+      <a href="tools/tax-calc.html" class="tool-card glass-card scroll-reveal" data-tags="세금 연봉 월급 실수령액 4대보험 계산">
+        <span class="tool-emoji">💰</span>
+        <h3 class="tool-name">연봉 실수령액 계산</h3>
+        <p class="tool-desc">4대보험, 소득세 공제 후 진짜 내 월급 계산</p>
+        <div class="tool-tags"><span>재테크</span><span>2위</span></div>
+      </a>
+      
+      <a href="tools/date-calc.html" class="tool-card glass-card scroll-reveal" data-tags="날짜 디데이 dday 기념일 계산 차이">
+        <span class="tool-emoji">📅</span>
+        <h3 class="tool-name">날짜 계산기</h3>
+        <p class="tool-desc">D-day, 날짜 차이, 기념일 초간단 계산</p>
+        <div class="tool-tags"><span>생활</span><span>3위</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tools">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">🛠️ ALL TOOLS</span>
+      <h2 class="section-title">전체 도구 모음</h2>
+      <p class="section-sub">카테고리 구분 없이 모든 도구를 검색하고 찾아보세요</p>
+    </div>
+
+    <div class="tools-grid" id="allToolsGrid">
+      
+      <!-- 계산기 -->
+      <a href="tools/bmi.html" class="tool-card glass-card scroll-reveal" data-tags="bmi 비만도 체중 건강 다이어트">
+        <span class="tool-emoji">⚖️</span>
+        <h3 class="tool-name">BMI 계산기</h3>
+        <p class="tool-desc">내 키와 몸무게로 비만도와 정상체중 범위 확인</p>
+        <div class="tool-tags"><span>건강</span></div>
+      </a>
+      <a href="tools/loan-calc.html" class="tool-card glass-card scroll-reveal" data-tags="대출 이자 원리금 원금 이율 계산">
+        <span class="tool-emoji">🏦</span>
+        <h3 class="tool-name">대출 이자 계산기</h3>
+        <p class="tool-desc">원리금균등, 만기일시 등 상환방식별 이자 계산</p>
+        <div class="tool-tags"><span>금융</span></div>
+      </a>
+      <a href="tools/age-calc.html" class="tool-card glass-card scroll-reveal" data-tags="나이 만나이 연령 띠 생일 계산">
+        <span class="tool-emoji">🎂</span>
+        <h3 class="tool-name">만 나이 계산기</h3>
+        <p class="tool-desc">정확한 만나이, 한국나이, 띠, 생일 디데이 확인</p>
+        <div class="tool-tags"><span>생활</span></div>
+      </a>
+      <a href="tools/unit-convert.html" class="tool-card glass-card scroll-reveal" data-tags="단위 변환 길이 무게 온도 넓이 평수">
+        <span class="tool-emoji">📐</span>
+        <h3 class="tool-name">단위 변환기</h3>
+        <p class="tool-desc">길이, 무게, 온도, 평수 등 모든 단위 환산</p>
+        <div class="tool-tags"><span>변환</span></div>
+      </a>
+
+      <!-- 텍스트/보안 -->
+      <a href="tools/password-gen.html" class="tool-card glass-card scroll-reveal" data-tags="비밀번호 패스워드 랜덤 보안 생성">
+        <span class="tool-emoji">🔐</span>
+        <h3 class="tool-name">비밀번호 생성기</h3>
+        <p class="tool-desc">해킹 불가능한 강력한 랜덤 비밀번호 즉시 생성</p>
+        <div class="tool-tags"><span>보안</span></div>
+      </a>
+      <a href="tools/case-converter.html" class="tool-card glass-card scroll-reveal" data-tags="대문자 소문자 변환 텍스트 영어 카멜케이스">
+        <span class="tool-emoji">🔤</span>
+        <h3 class="tool-name">대소문자 변환기</h3>
+        <p class="tool-desc">모두 대문자/소문자, 낙타표기법 등 자동 변환</p>
+        <div class="tool-tags"><span>텍스트</span></div>
+      </a>
+      
+      <!-- 유틸리티 -->
+      <a href="tools/color-picker.html" class="tool-card glass-card scroll-reveal" data-tags="색상 컬러 헥스 hex rgb hsl 피커">
+        <span class="tool-emoji">🎨</span>
+        <h3 class="tool-name">색상 코드 변환기</h3>
+        <p class="tool-desc">원하는 컬러를 뽑아내고 HEX, RGB 코드로 복사</p>
+        <div class="tool-tags"><span>디자인</span></div>
+      </a>
+      <a href="tools/qr-gen.html" class="tool-card glass-card scroll-reveal" data-tags="qr 코드 생성 큐알 url 링크">
+        <span class="tool-emoji">📱</span>
+        <h3 class="tool-name">QR 코드 생성기</h3>
+        <p class="tool-desc">URL이나 텍스트를 무료 고화질 QR코드로 변환</p>
+        <div class="tool-tags"><span>유틸</span></div>
+      </a>
+      
+    </div>
+  </div>
+</section>
+
+<div class="adsense-zone container"><div class="adsense-placeholder">📢 광고 영역 (Google AdSense)</div></div>
+
+<footer class="footer">
+  <div class="container" style="text-align:center;padding:40px 0;border-top:1px solid var(--border);">
+    <div style="font-size:1.5rem;font-weight:900;margin-bottom:8px">🛠️ 툴박스</div>
+    <p style="color:var(--text-muted);font-size:0.9rem">© 2026 툴박스 · 광고 문의 및 제휴 안내</p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+
+<!-- Social Bar Ad -->
+<script src="https://pl30449988.effectivecpmnetwork.com/e8/cf/3f/e8cf3fd4d0fa1cf2ede054eed2e044b6.js"></script>
+<!-- Popunder Ad -->
+<script src="https://pl30449989.effectivecpmnetwork.com/3f/ac/ae/3facae89d4680a80fe174eba6f40cd5a.js"></script>
+</body>
+</html>

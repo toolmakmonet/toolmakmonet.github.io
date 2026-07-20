@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-1448989198452809">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1448989198452809" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>연봉 실수령액 계산기 - 세금 공제 후 월급 계산 | 툴박스</title>
+  <meta name="description" content="연봉 입력 시 국민연금, 건강보험, 고용보험, 소득세 공제 후 실제 월 실수령액을 무료로 계산해드립니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .deduction-item {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:12px 0; border-bottom:1px solid var(--border); font-size:0.9rem;
+    }
+    .deduction-item:last-child { border:none; }
+    .deduction-label { color:var(--text-secondary); font-weight:500; }
+    .deduction-amount { font-weight:700; }
+    .deduction-amount.negative { color:#ef4444; }
+    .deduction-amount.total { color:var(--primary-light); font-size:1.1rem; }
+    .take-home-badge {
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      border-radius:var(--radius-lg); padding:24px; text-align:center; margin-bottom:16px;
+    }
+    .take-home-badge .label { font-size:0.85rem; opacity:0.8; margin-bottom:6px; }
+    .take-home-badge .amount { font-size:2.5rem; font-weight:800; }
+  </style>
+</head>
+<body>
+<header class="header">
+  <nav class="nav container">
+    <a href="../index.html" class="nav-logo"><span class="logo-icon">🛠️</span><span class="logo-text">툴박스</span></a>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+  </nav>
+</header>
+
+<main class="tool-page">
+  <div class="container">
+    <a href="../index.html" class="back-btn">← 전체 도구로 돌아가기</a>
+    <div class="tool-page-header">
+      <div style="font-size:3.5rem">💰</div>
+      <h1>연봉 실수령액 계산기</h1>
+      <p>4대보험과 세금 공제 후 실제로 받는 월급을 계산해드립니다</p>
+    </div>
+
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+      <div class="ad-desktop" style="display:block;">
+<script>
+  atOptions = {
+    'key' : '05f8ecca621b83cf8bfe28d7adb9d842',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/05f8ecca621b83cf8bfe28d7adb9d842/invoke.js"></script>
+      </div>
+    </div>
+
+    <div class="tool-box">
+      <div class="form-group">
+        <label class="form-label">연봉 (만원)</label>
+        <input type="number" class="form-input" id="salary" placeholder="예: 4000" min="0" />
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="form-group" style="margin:0">
+          <label class="form-label">부양가족 수</label>
+          <select class="form-select" id="dependents">
+            <option value="1">1명 (본인만)</option>
+            <option value="2">2명</option>
+            <option value="3">3명</option>
+            <option value="4">4명</option>
+            <option value="5">5명 이상</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin:0">
+          <label class="form-label">20세 이하 자녀</label>
+          <select class="form-select" id="children">
+            <option value="0">0명</option>
+            <option value="1">1명</option>
+            <option value="2">2명</option>
+            <option value="3">3명 이상</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="calcSalary()" style="width:100%;margin-top:4px">💰 실수령액 계산하기</button>
+
+      <div id="result" style="display:none;">
+        <div class="result-box">
+          <div class="take-home-badge">
+            <div class="label">월 실수령액</div>
+            <div class="amount" id="takeHome">-</div>
+          </div>
+
+          <div id="deductions">
+            <div class="deduction-item">
+              <span class="deduction-label">💵 월 급여 (세전)</span>
+              <span class="deduction-amount" id="monthlyGross">-</span>
+            </div>
+            <div class="deduction-item">
+              <span class="deduction-label">🏥 국민연금 (4.5%)</span>
+              <span class="deduction-amount negative" id="pension">-</span>
+            </div>
+            <div class="deduction-item">
+              <span class="deduction-label">💊 건강보험 (3.545%)</span>
+              <span class="deduction-amount negative" id="health">-</span>
+            </div>
+            <div class="deduction-item">
+              <span class="deduction-label">🦷 장기요양보험 (건강보험×12.95%)</span>
+              <span class="deduction-amount negative" id="ltc">-</span>
+            </div>
+            <div class="deduction-item">
+              <span class="deduction-label">💼 고용보험 (0.9%)</span>
+              <span class="deduction-amount negative" id="employment">-</span>
+            </div>
+            <div class="deduction-item">
+              <span class="deduction-label">📋 소득세 (간이세액표)</span>
+              <span class="deduction-amount negative" id="incomeTax">-</span>
+            </div>
+            <div class="deduction-item">
+              <span class="deduction-label">🏙️ 지방소득세 (소득세×10%)</span>
+              <span class="deduction-amount negative" id="localTax">-</span>
+            </div>
+            <div class="deduction-item" style="padding-top:16px;border-top:2px solid var(--primary)">
+              <span style="font-weight:800;font-size:1rem">💳 총 공제액</span>
+              <span class="deduction-amount negative" id="totalDeduction" style="font-size:1.1rem">-</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-grid" style="margin-top:16px;">
+          <div class="result-item">
+            <span class="result-num" id="yearlyTake">-</span>
+            <div class="result-label">연 실수령액(만원)</div>
+          </div>
+          <div class="result-item">
+            <span class="result-num" id="taxRate">-</span>
+            <div class="result-label">실효세율</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-zone-responsive" style="text-align:center;overflow:hidden;">
+<script>
+  atOptions = {
+    'key' : '45b3896c65f61fa42904ff26143ca550',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/45b3896c65f61fa42904ff26143ca550/invoke.js"></script>
+    </div>
+
+    <div style="max-width:760px;margin:40px auto 0;padding:32px;background:var(--bg-card);border-radius:var(--radius-lg);border:1px solid var(--border)">
+      <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:12px">⚠️ 계산 안내</h2>
+      <p style="color:var(--text-secondary);line-height:1.8;font-size:0.85rem">
+        본 계산기는 2024년 기준 4대보험 요율을 적용한 <strong>근사치</strong>입니다. 실제 수령액은 회사 복리후생, 비과세 항목, 연말정산 결과에 따라 다를 수 있습니다. 정확한 금액은 급여명세서를 확인하거나 세무사에게 문의하세요.
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-logo"><span class="logo-icon">🛠️</span><span class="logo-text">툴박스</span></div>
+    <p class="footer-copy">© 2026 툴박스 · 무료 온라인 도구</p>
+  </div>
+</footer>
+
+<script>
+const tt = document.getElementById('themeToggle');
+if (localStorage.getItem('theme') === 'light') { document.body.classList.add('light'); tt.textContent = '☀️'; }
+tt.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  const isLight = document.body.classList.contains('light');
+  tt.textContent = isLight ? '☀️' : '🌙';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+function fmt(n) { return Math.round(n).toLocaleString() + '원'; }
+
+// Simplified income tax table (monthly gross in won)
+function getIncomeTax(monthly, dependents) {
+  const d = parseInt(dependents);
+  // Simplified progressive rates
+  if (monthly <= 1060000) return 0;
+  if (monthly <= 1500000) return Math.round(monthly * 0.006);
+  if (monthly <= 3000000) return Math.round(monthly * 0.015);
+  if (monthly <= 4500000) return Math.round(monthly * 0.024);
+  if (monthly <= 7800000) return Math.round(monthly * 0.035);
+  if (monthly <= 12000000) return Math.round(monthly * 0.048);
+  return Math.round(monthly * 0.062);
+}
+
+function calcSalary() {
+  const annual = parseFloat(document.getElementById('salary').value) * 10000;
+  if (!annual || annual <= 0) { alert('연봉을 입력해주세요.'); return; }
+  const dependents = document.getElementById('dependents').value;
+  const monthly = annual / 12;
+
+  const pension = Math.round(monthly * 0.045);
+  const health = Math.round(monthly * 0.03545);
+  const ltc = Math.round(health * 0.1295);
+  const employment = Math.round(monthly * 0.009);
+  const incomeTax = getIncomeTax(monthly, dependents);
+  const localTax = Math.round(incomeTax * 0.1);
+  const totalDeduction = pension + health + ltc + employment + incomeTax + localTax;
+  const takeHome = monthly - totalDeduction;
+
+  document.getElementById('monthlyGross').textContent = fmt(monthly);
+  document.getElementById('pension').textContent = '-' + fmt(pension);
+  document.getElementById('health').textContent = '-' + fmt(health);
+  document.getElementById('ltc').textContent = '-' + fmt(ltc);
+  document.getElementById('employment').textContent = '-' + fmt(employment);
+  document.getElementById('incomeTax').textContent = '-' + fmt(incomeTax);
+  document.getElementById('localTax').textContent = '-' + fmt(localTax);
+  document.getElementById('totalDeduction').textContent = '-' + fmt(totalDeduction);
+  document.getElementById('takeHome').textContent = fmt(takeHome);
+  document.getElementById('yearlyTake').textContent = Math.round(takeHome * 12 / 10000).toLocaleString() + '만';
+  document.getElementById('taxRate').textContent = (totalDeduction / monthly * 100).toFixed(1) + '%';
+
+  const resultEl = document.getElementById('result');
+  resultEl.style.display = 'block';
+  resultEl.scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+</script>
+
+<!-- Social Bar Ad -->
+<script src="https://pl30449988.effectivecpmnetwork.com/e8/cf/3f/e8cf3fd4d0fa1cf2ede054eed2e044b6.js"></script>
+<!-- Popunder Ad -->
+<script src="https://pl30449989.effectivecpmnetwork.com/3f/ac/ae/3facae89d4680a80fe174eba6f40cd5a.js"></script>
+</body>
+</html>
